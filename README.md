@@ -29,7 +29,7 @@ Neste projeto foram utilizadas as seguintes tecnologias:
 
 ## Como Usar
 
-Para clonar e executar este aplicativo, você precisará [Git](https://git-scm.com), [Eclipse 4.15.0][https://www.eclipse.org/] ou superior instalado no seu computador. Executar no seu terminal:
+Para clonar e executar este aplicativo, você precisará [Git](https://git-scm.com), [Eclipse 4.15.0](https://www.eclipse.org/) ou superior instalado no seu computador. Executar no seu terminal:
 
 ```bash
 # Para clonar este repositório
