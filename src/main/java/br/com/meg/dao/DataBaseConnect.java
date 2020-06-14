@@ -11,7 +11,7 @@ public class DataBaseConnect {
 	private DataBaseConnect() {
 		try {			
 			Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
-			con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.55.245:1521:dbsystex", "systextil", "oracle");
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:clientes", "oracle", "oracle");
 						
 		} catch (Exception e) {
 			System.out.println("\n\n##########################################");

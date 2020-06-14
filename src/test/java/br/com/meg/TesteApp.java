@@ -11,7 +11,7 @@ import br.com.meg.model.Cliente;
 public class TesteApp {
 	
 //	DataBaseController db;
-	
+//	
 //    @Test
 //    public void listarTest() {
 //    	System.out.println("\n\n##########################################");
@@ -27,7 +27,7 @@ public class TesteApp {
 //    	}
 //    	
 //    }
-	
+//	
 //	@Test
 //	public void buscar() {
 //		System.out.println("\n\n##########################################");
