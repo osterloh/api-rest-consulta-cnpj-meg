@@ -29,7 +29,7 @@ public class ControllerResource {
     @GET
     @Path("{cnpj}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Cliente getByCnpj(@PathParam("cnpj") long cnpj) {
+    public Cliente getByCnpj(@PathParam("cnpj") String cnpj) {
     	return repositorio.buscar(cnpj);
     }
 

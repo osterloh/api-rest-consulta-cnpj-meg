@@ -2,9 +2,9 @@ package br.com.meg.model;
 
 public class Cliente {
 
-	private long cgc_9;
-	private long cgc_4;
-	private long cgc_2;
+	private String cgc_9;
+	private String cgc_4;
+	private String cgc_2;
 	private String nome_cliente;
 	private String fantasia_cliente;
 	private String endereco_cliente;
@@ -16,27 +16,28 @@ public class Cliente {
 
 	}
 
-	public long getCgc_9() {
+	public String getCgc_9() {
 		return cgc_9;
 	}
 
-	public void setCgc_9(long cgc_9) {
+	public void setCgc_9(String cgc_9) {
+		
 		this.cgc_9 = cgc_9;
 	}
 
-	public long getCgc_4() {
+	public String getCgc_4() {
 		return cgc_4;
 	}
 
-	public void setCgc_4(long cgc_4) {
+	public void setCgc_4(String cgc_4) {
 		this.cgc_4 = cgc_4;
 	}
 
-	public long getCgc_2() {
+	public String getCgc_2() {
 		return cgc_2;
 	}
 
-	public void setCgc_2(long cgc_2) {
+	public void setCgc_2(String cgc_2) {
 		this.cgc_2 = cgc_2;
 	}
 

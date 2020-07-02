@@ -36,7 +36,7 @@ public class TesteApp {
 //
 //		db = new DataBaseController();
 //		
-//		db.buscar(67677726);
+//		db.buscar("00006767007726");
 //	}
 
 }

@@ -19,25 +19,36 @@ public class DataBaseController {
 	}
 
 	public void listar(List<Cliente> clientes) {
+		String ZERO_9 = "00000000";
+		String ZERO_4 = "0000";
+		String ZERO_2 = "00";
 		try {
 			String sql = "select cgc_9, cgc_4, cgc_2, nome_cliente, fantasia_cliente, endereco_cliente, bairro, data_cad_cliente, cep_cliente from pedi_010";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				cliente = new Cliente();
 
-				cliente.setCgc_9(rs.getInt("CGC_9"));
-				cliente.setCgc_4(rs.getInt("CGC_4"));
-				cliente.setCgc_2(rs.getInt("CGC_2"));
-				cliente.setNome_cliente(rs.getString("NOME_CLIENTE"));
-				cliente.setFantasia_cliente(rs.getString("FANTASIA_CLIENTE"));
-				cliente.setBairro(rs.getString("BAIRRO"));
-				cliente.setEndereco_cliente(rs.getString("ENDERECO_CLIENTE"));
-				cliente.setCep_cliente(rs.getInt("CEP_CLIENTE"));
-				cliente.setData_cad_cliente(rs.getString("DATA_CAD_CLIENTE"));
+				if (rs.getString("CGC_9").length() >= 9) {
+					continue;
 
-				clientes.add(cliente);
+				} else {
+					cliente = new Cliente();
+
+					cliente.setNome_cliente(rs.getString("NOME_CLIENTE"));
+					cliente.setFantasia_cliente(rs.getString("FANTASIA_CLIENTE"));
+					cliente.setBairro(rs.getString("BAIRRO"));
+					cliente.setEndereco_cliente(rs.getString("ENDERECO_CLIENTE"));
+					cliente.setCep_cliente(rs.getInt("CEP_CLIENTE"));
+					cliente.setData_cad_cliente(rs.getString("DATA_CAD_CLIENTE"));
+
+					cliente.setCgc_9(ZERO_9.substring(rs.getString("CGC_9").length()) + rs.getString("CGC_9"));
+					cliente.setCgc_4(ZERO_4.substring(rs.getString("CGC_4").length()) + rs.getString("CGC_4"));
+					cliente.setCgc_2(ZERO_2.substring(rs.getString("CGC_2").length()) + rs.getString("CGC_2"));
+
+					clientes.add(cliente);
+				}
+
 			}
 
 		} catch (SQLException e) {
@@ -48,19 +59,16 @@ public class DataBaseController {
 		}
 	}
 
-	public Cliente buscar(long cnpj) {
+	public Cliente buscar(String cnpj) {
 		Cliente cliente = new Cliente();
 		List<Cliente> clientes = new ArrayList<Cliente>();
 		listar(clientes);
 
 		for (int i = 0; i < clientes.size(); i++) {
-						
-			long cgc = Long.parseLong(
-					clientes.get(i).getCgc_9() + "" + clientes.get(i).getCgc_4() + "" + clientes.get(i).getCgc_2());
 
-			if (cgc == cnpj) {
-				System.out.println("Dentro do IF: " + i);
-				System.out.println("CGC: " + cgc);
+			String cgc = clientes.get(i).getCgc_9() + clientes.get(i).getCgc_4() + clientes.get(i).getCgc_2();
+
+			if (cgc.equals(cnpj)) {
 				cliente.setCgc_9(clientes.get(i).getCgc_9());
 				cliente.setCgc_4(clientes.get(i).getCgc_4());
 				cliente.setCgc_2(clientes.get(i).getCgc_2());
@@ -75,9 +83,6 @@ public class DataBaseController {
 			}
 
 		}
-
-		System.out.println("Carregou!!!");
-		System.out.println(cliente);
 
 		return cliente;
 	}
